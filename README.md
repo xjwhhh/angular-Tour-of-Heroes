@@ -10,6 +10,7 @@ a tour of heroes
 
 ![hero-detail](https://github.com/xjwhhh/angular-tour-of-heroes/blob/master/src/picture/hero-detail.png)
 
+![hero-form](https://github.com/xjwhhh/angular-tour-of-heroes/blob/master/src/picture/hero-form.png)
 
 # Lack
 
