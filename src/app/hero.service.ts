@@ -5,6 +5,10 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
 import {newHero, newheroes} from './data-model';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
+
 
 //导入了 Angular 的Injectable函数，并作为@Injectable()装饰器使用这个函数。
 //当 TypeScript 看到@Injectable()装饰器时，就会记下本服务的元数据。 如果 Angular 需要往这个服务中注入其它依赖，就会使用这些元数据。
@@ -16,6 +20,25 @@ export class HeroService {
   getHeroes(): Promise<Hero[]> {
     return Promise.resolve(HEROES);
   }//stub
+
+  private heroesUrl = 'api/heroes';  // URL to web api
+
+constructor(private http: Http) { }
+
+// 利用toPromise操作符把Observable直接转换成Promise对象，回到已经熟悉的地盘。
+// 在 promise 的then()回调中，我们调用 HTTP 的Reponse对象的json方法，以提取出其中的数据。
+// 这个由json方法返回的对象只有一个data属性。 这个data属性保存了英雄数组，这个数组才是调用者真正想要的。 所以我们取得这个数组，并且把它作为承诺的值进行解析。
+// getHeroes(): Promise<Hero[]> {
+//   return this.http.get(this.heroesUrl)
+//              .toPromise()
+//              .then(response => response.json().data as Hero[])
+//              .catch(this.handleError);
+// }
+
+private handleError(error: any): Promise<any> {
+  console.error('An error occurred', error); // for demo purposes only
+  return Promise.reject(error.message || error);
+}
 
   getHeroesSlowly(): Promise<Hero[]> {
     return new Promise(resolve => {
@@ -29,6 +52,7 @@ export class HeroService {
     return this.getHeroes()
       .then(heroes => heroes.find(hero => hero.id === id));
   }
+
 
   delayMs = 500;
 
