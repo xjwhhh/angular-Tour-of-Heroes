@@ -56,6 +56,12 @@ nav a.active {
   //   styleUrls: ['./app.component.css'],  失败
 
 })
+
+// @Component({
+//   selector: 'my-app',
+//   template: 
+//   `<h1>{{title}}</h1>`
+// })
 export class AppComponent {
   title = 'Tour of Heroes';
 }

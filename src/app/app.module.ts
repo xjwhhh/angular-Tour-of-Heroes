@@ -7,15 +7,20 @@ import {HeroDetailComponent} from './hero-detail.component';
 import {HeroesComponent} from './heroes.component';
 import {HeroService} from './hero.service';
 import {DashboardComponent} from './dashboard.component';
-import { HeroFormComponent } from './hero-form.component';
+import {HeroFormComponent} from './hero-form.component';
 
 import {AppRoutingModule} from './app-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+// import { newHeroDetailComponent } from './new-hero-detail.component';
+// import { HeroListComponent } from './hero-list.component';
+// import { HeroListContainerComponent } from './hero-list-container.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   //通常，declarations数组包含应用中属于该模块的组件、管道和指令的列表。 组件在被其它组件引用之前必须先在一个模块中声明过。
   declarations: [
@@ -23,8 +28,14 @@ import {AppRoutingModule} from './app-routing.module';
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    // HeroListContainerComponent
   ],
+  // exports: [ // export for the DemoModule
+  //   AppComponent,
+  //   // newHeroDetailComponent,
+  //   // HeroListComponent
+  // ],
   providers: [
     HeroService
   ],

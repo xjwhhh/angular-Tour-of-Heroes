@@ -1,0 +1,79 @@
+<!-- 不用管这些脚本中提到的form-group、form-control、center-block和checkbox等。 它们是来自Bootstrap的CSS类，Angular本身不会管它们。 注意formGroupName和formControlName属性。 他们是Angular指令，用于把相应的HTML控件绑定到组件中的FormGroup和FormControl类型的属性上。 -->
+
+
+<!-- formGroup是一个响应式表单的指令，它拿到一个现有FormGroup实例，并把它关联到一个HTML元素上。 这种情况下，它关联到的是form元素上的FormGroup实例heroForm。 -->
+<form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate>
+  <div style="margin-bottom: 1em">
+    <!-- 这些按钮默认是禁用的，直到用户通过修改任何一个表单控件的值“弄脏”了表单中的数据（即heroForm.dirty）。
+点击一个类型为"submit"的按钮会触发ngSubmit事件，而它会调用组件的onSubmit方法。 点击“Revert”按钮则会调用组件的revert方法。 现在，用户可以保存或放弃修改了。 -->
+    <button type="submit"
+            [disabled]="heroForm.pristine" class="btn btn-success">Save
+    </button> &nbsp;
+    <button type="reset" (click)="revert()"
+            [disabled]="heroForm.pristine" class="btn btn-danger">Revert
+    </button>
+  </div>
+
+  <!-- Hero Detail Controls -->
+  <!-- 有了FormGroup，name输入框就需要再添加一个语法formControlName=name，以便让它关联到类中正确的FormControl上。 这个语法告诉Angular，查阅父FormGroup（这里是heroForm），然后在这个FormGroup中查阅一个名叫name的FormControl。 -->
+  <div class="form-group">
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+  </div>
+  <!--
+  在*ngFor的<div>之外套上另一个包装<div>，并且把它的formArrayName指令设为"secretLairs"。 这一步为内部的表单控件建立了一个FormArray型的secretLairs作为上下文，以便重复渲染HTML模板。
+  这些重复条目的数据源是FormArray.controls而不是FormArray本身。 每个控件都是一个FormGroup型的地址对象，与以前的模板HTML所期望的格式完全一样。
+  每个被重复渲染的FormGroup都需要一个独一无二的formGroupName，它必须是FormGroup在这个FormArray中的索引。 我们将复用这个索引，以便为每个地址组合出一个独一无二的标签。 -->
+  <div formArrayName="secretLairs" class="well well-lg">
+    <div *ngFor="let address of secretLairs.controls; let i=index" [formGroupName]="i">
+      <!-- The repeated address template -->
+      <h4>Address #{{i + 1}}</h4>
+      <div style="margin-left: 1em;">
+        <div class="form-group">
+          <label class="center-block">Street:
+            <input class="form-control" formControlName="street">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">City:
+            <input class="form-control" formControlName="city">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">State:
+            <select class="form-control" formControlName="state">
+              <option *ngFor="let state of states" [value]="state">{{state}}</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Zip Code:
+            <input class="form-control" formControlName="zip">
+          </label>
+        </div>
+      </div>
+      <br>
+      <!-- End of the repeated address template -->
+    </div>
+    <!-- 把一个按钮放在表单中，以便用户可以添加新的秘密小屋，并把它传给组件的addLair方法。 -->
+    <button (click)="addLair()" type="button">Add a Secret Lair</button>
+  </div>
+  <div class="form-group radio">
+    <h4>Super power:</h4>
+    <label class="center-block"><input type="radio" formControlName="power" value="flight">Flight</label>
+    <label class="center-block"><input type="radio" formControlName="power" value="x-ray vision">X-ray vision</label>
+    <label class="center-block"><input type="radio" formControlName="power" value="strength">Strength</label>
+  </div>
+  <div class="checkbox">
+    <label class="center-block">
+      <input type="checkbox" formControlName="sidekick">I have a sidekick.
+    </label>
+  </div>
+</form>
+
+<!-- heroForm.value会返回表单模型。 用JsonPipe管道把这个模型以JSON格式渲染到浏览器中。 -->
+<p>heroForm value: {{ heroForm.value | json}}</p>
+
+<h4>Name change log</h4>
+<div *ngFor="let name of nameChangeLog">{{name}}</div>

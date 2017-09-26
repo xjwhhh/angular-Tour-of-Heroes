@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Hero} from './hero';
 import {HEROES} from './mock-heroes';
-
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import 'rxjs/add/operator/delay';
+import {newHero, newheroes} from './data-model';
 
 //导入了 Angular 的Injectable函数，并作为@Injectable()装饰器使用这个函数。
 //当 TypeScript 看到@Injectable()装饰器时，就会记下本服务的元数据。 如果 Angular 需要往这个服务中注入其它依赖，就会使用这些元数据。
@@ -25,5 +28,19 @@ export class HeroService {
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
       .then(heroes => heroes.find(hero => hero.id === id));
+  }
+
+  delayMs = 500;
+
+  // Fake server get; assume nothing can go wrong
+  getnewHeroes(): Observable<newHero[]> {
+    return of(newheroes).delay(this.delayMs); // simulate latency with delay
+  }
+
+  // Fake server update; assume nothing can go wrong
+  updatenewHero(hero: newHero): Observable<newHero> {
+    const oldHero = newheroes.find(h => h.id === hero.id);
+    const newHero1 = Object.assign(oldHero, hero); // Demo: mutate cached hero
+    return of(newHero1).delay(this.delayMs); // simulate latency with delay
   }
 }
