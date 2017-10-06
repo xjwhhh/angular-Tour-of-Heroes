@@ -21,7 +21,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>{{title}}</h1>\n  <nav>\n    <a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a>\n    <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n    <a routerLink=\"/heroform\" routerLinkActive=\"active\">HeroForm</a>\n  </nav>\n  <router-outlet></router-outlet>\n",
+        template: "\n  <h1>{{title}}</h1>\n  <nav>\n    <a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a>\n    <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n    <a routerLink=\"/heroform\" routerLinkActive=\"active\">HeroForm</a>\n    <a routerLink=\"/herolist\" routerLinkActive=\"active\">HeroList</a>\n  </nav>\n  <router-outlet></router-outlet>\n",
         //首先把moduleId: module.id添加到AppComponent组件的@Component元数据中以启用相对于模块的文件URL。 然后添加styleUrls属性，使其指向这个CSS文件
         styles: ["\n  h1 {\n  font-size: 1.2em;\n  color: #999;\n  margin-bottom: 0;\n}\nh2 {\n  font-size: 2em;\n  margin-top: 0;\n  padding-top: 0;\n}\nnav a {\n  padding: 5px 10px;\n  text-decoration: none;\n  margin-top: 10px;\n  display: inline-block;\n  background-color: #eee;\n  border-radius: 4px;\n}\nnav a:visited, a:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n\n\n  "]
     })

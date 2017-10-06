@@ -4,7 +4,7 @@ import {DashboardComponent} from './dashboard.component';
 import {HeroesComponent} from './heroes.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroFormComponent} from './hero-form.component';
-// import { HeroListComponent } from './hero-list.component';
+import { HeroListComponent } from './hero-list.component';
 // import { newHeroDetailComponent } from './new-hero-detail.component';
 
 //将路由抽出到一个变量中。如果你将来要导出这个模块，这种 "路由模块" 的模式也会更加明确。
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'detail/:id', component: HeroDetailComponent},
   {path: 'heroes', component: HeroesComponent},
   {path: 'heroform', component: HeroFormComponent},
-  // {path: 'herolist', component: HeroListComponent}
+  {path: 'herolist', component: HeroListComponent}
 ];
 
 //使用了forRoot()方法，因为我们是在应用根部提供配置好的路由器。

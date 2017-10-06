@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
     <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
     <a routerLink="/heroform" routerLinkActive="active">HeroForm</a>
+    <a routerLink="/herolist" routerLinkActive="active">HeroList</a>
   </nav>
   <router-outlet></router-outlet>
 `,

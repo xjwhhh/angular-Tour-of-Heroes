@@ -11,7 +11,7 @@ var dashboard_component_1 = require("./dashboard.component");
 var heroes_component_1 = require("./heroes.component");
 var hero_detail_component_1 = require("./hero-detail.component");
 var hero_form_component_1 = require("./hero-form.component");
-// import { HeroListComponent } from './hero-list.component';
+var hero_list_component_1 = require("./hero-list.component");
 // import { newHeroDetailComponent } from './new-hero-detail.component';
 //将路由抽出到一个变量中。如果你将来要导出这个模块，这种 "路由模块" 的模式也会更加明确。
 //添加RouterModule.forRoot(routes)到imports。
@@ -24,6 +24,7 @@ var routes = [
     { path: 'detail/:id', component: hero_detail_component_1.HeroDetailComponent },
     { path: 'heroes', component: heroes_component_1.HeroesComponent },
     { path: 'heroform', component: hero_form_component_1.HeroFormComponent },
+    { path: 'herolist', component: hero_list_component_1.HeroListComponent }
 ];
 //使用了forRoot()方法，因为我们是在应用根部提供配置好的路由器。
 //forRoot()方法提供了路由需要的路由服务提供商和指令，并基于当前浏览器 URL 初始化导航。

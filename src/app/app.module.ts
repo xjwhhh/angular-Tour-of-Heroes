@@ -11,8 +11,8 @@ import {HeroFormComponent} from './hero-form.component';
 
 import {AppRoutingModule} from './app-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
-// import { newHeroDetailComponent } from './new-hero-detail.component';
-// import { HeroListComponent } from './hero-list.component';
+import { newHeroDetailComponent } from './new-hero-detail.component';
+import { HeroListComponent } from './hero-list.component';
 // import { HeroListContainerComponent } from './hero-list-container.component';
 import { HttpModule }    from '@angular/http';
 // Imports for loading & configuring the in-memory web api
@@ -35,7 +35,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     HeroesComponent,
     DashboardComponent,
     HeroFormComponent,
-    // HeroListContainerComponent
+    HeroListComponent,
+    newHeroDetailComponent,
   ],
   // exports: [ // export for the DemoModule
   //   AppComponent,

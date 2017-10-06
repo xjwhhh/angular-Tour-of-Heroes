@@ -17,8 +17,8 @@ var dashboard_component_1 = require("./dashboard.component");
 var hero_form_component_1 = require("./hero-form.component");
 var app_routing_module_1 = require("./app-routing.module");
 var forms_2 = require("@angular/forms");
-// import { newHeroDetailComponent } from './new-hero-detail.component';
-// import { HeroListComponent } from './hero-list.component';
+var new_hero_detail_component_1 = require("./new-hero-detail.component");
+var hero_list_component_1 = require("./hero-list.component");
 // import { HeroListContainerComponent } from './hero-list-container.component';
 var http_1 = require("@angular/http");
 // Imports for loading & configuring the in-memory web api
@@ -46,6 +46,8 @@ AppModule = __decorate([
             heroes_component_1.HeroesComponent,
             dashboard_component_1.DashboardComponent,
             hero_form_component_1.HeroFormComponent,
+            hero_list_component_1.HeroListComponent,
+            new_hero_detail_component_1.newHeroDetailComponent,
         ],
         // exports: [ // export for the DemoModule
         //   AppComponent,
